@@ -1,16 +1,26 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { NgxChessBoardModule } from 'ngx-chess-board';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { IframeComponent } from './components/iframe/iframe.component';
+import { IframepageComponent } from './pages/iframepage/iframepage.component';
+import { MainpageComponent } from './pages/mainpage/mainpage.component';
+import { UrlsafetyPipe } from './pipes/urlsafety.pipe';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    MainpageComponent,
+    IframepageComponent,
+    IframeComponent,
+    UrlsafetyPipe
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    NgxChessBoardModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

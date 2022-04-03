@@ -1,7 +1,19 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-const routes: Routes = [];
+import { IframepageComponent } from './pages/iframepage/iframepage.component';
+import { MainpageComponent } from './pages/mainpage/mainpage.component';
+
+const routes: Routes = [
+  {
+    path: '',
+    component: MainpageComponent,
+  },
+  {
+    path: 'iframepage',
+    component: IframepageComponent,
+  }
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

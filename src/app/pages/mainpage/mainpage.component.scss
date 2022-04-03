@@ -1,0 +1,18 @@
+
+header {
+    padding: 10px;
+}
+
+.iframe-container {
+  display: flex;
+  justify-content: space-between;
+  width: 1100px;
+  height: 515px;
+  margin:auto;
+  margin-top: 30px;
+  background-color: #DAD2E9;
+}
+
+.iframe-one, .iframe-two {
+  width: 515px;
+}
