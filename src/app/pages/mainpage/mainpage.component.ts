@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-mainpage',
@@ -7,14 +7,34 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MainpageComponent implements OnInit {
 
-  width = 600
-  height = 600
-  src = 'http://localhost:4200/iframepage'
-  // src = 'https://pencilapp.com/'
+
+  @ViewChild('iframeElement1', { static: true }) iframeElement1!: ElementRef;
+  @ViewChild('iframeElement2', { static: true }) iframeElement2!: ElementRef;
+
+  iframeOneNewMove!: string;
+  iframeTwoNewMove!: string;
 
   constructor() { }
 
   ngOnInit(): void {
+    window.addEventListener('message', (e) => {
+      if (e.data.type != 'webpackOk') {
+        const moveDetails = e.data.moveDetails;
+        //@ts-ignore //this because Ts don't the type of the event
+        const sender = e.source.frameElement?.id
+
+        //@ts-ignore //this because Ts don't the type of the event
+        e.source.postMessage({ moveDetails, sender }, e.origin)
+      }
+    })
+  }
+
+  moveIframeOne(e: any) {
+
+  }
+
+  moveIframeTwo(e: any) {
+
   }
 
 }

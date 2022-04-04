@@ -1,1 +1,4 @@
-<ngx-chess-board></ngx-chess-board>
+<ngx-chess-board #board
+(moveChange)="moveDone($event)"
+[lightTileColor]="'#DEBF83'" [showActivePiece]="true" [darkTileColor]="'#FB0007'">
+</ngx-chess-board>

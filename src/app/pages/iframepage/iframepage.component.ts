@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { NgxChessBoardService } from 'ngx-chess-board';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { NgxChessBoardService, NgxChessBoardView } from 'ngx-chess-board';
 
 @Component({
   selector: 'app-iframepage',
@@ -8,9 +8,31 @@ import { NgxChessBoardService } from 'ngx-chess-board';
 })
 export class IframepageComponent implements OnInit {
 
+  @ViewChild('board', { static: false }) board!: NgxChessBoardView;
+
+
   constructor(private ngxChessBoardService: NgxChessBoardService) { }
 
   ngOnInit(): void {
+    window.addEventListener('message', (e) => {
+
+      if (e.data.type != 'webpackOk') {
+        console.log('iframe page receive event from main', e);
+      }
+
+    })
+  }
+
+  reset() {
+    this.board.reset();
+  }
+
+  moveDone(e: any) {
+    window.parent.postMessage({ moveDetails: e }, "*")
+  }
+
+  setMove(newPosition: string) {
+    this.board.setFEN(newPosition);
   }
 
 }
