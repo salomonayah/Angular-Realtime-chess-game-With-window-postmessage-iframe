@@ -1,4 +1,5 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { NgxChessBoardService } from 'ngx-chess-board';
 
 @Component({
   selector: 'app-mainpage',
@@ -14,27 +15,33 @@ export class MainpageComponent implements OnInit {
   iframeOneNewMove!: string;
   iframeTwoNewMove!: string;
 
-  constructor() { }
+  url = 'http://localhost:4200/iframepage'
+
+  constructor(private ngxChessBoardService: NgxChessBoardService) { }
 
   ngOnInit(): void {
     window.addEventListener('message', (e) => {
-      if (e.data.type != 'webpackOk') {
-        const moveDetails = e.data.moveDetails;
+      console.log(e)
+      const { data } = e;
+
+      if (data.type === 'update') {
+
         //@ts-ignore //this because Ts don't the type of the event
         const sender = e.source.frameElement?.id
 
-        //@ts-ignore //this because Ts don't the type of the event
-        e.source.postMessage({ moveDetails, sender }, e.origin)
+        if (sender === 'chessBoardIframe1') {
+          this.iframeElement2.nativeElement.contentWindow.postMessage({ fen: data.move.fen, sender: sender, type: "update" }, "*")
+
+        } else if (sender === 'chessBoardIframe2') {
+          this.iframeElement1.nativeElement.contentWindow.postMessage({ fen: data.move.fen, sender: sender, type: "update" }, "*")
+        }
+
       }
     })
   }
 
-  moveIframeOne(e: any) {
-
-  }
-
-  moveIframeTwo(e: any) {
-
+  sendReverse() {
+    this.iframeElement2.nativeElement.contentWindow.postMessage({ reverse: true, type: "reverse" }, "*")
   }
 
 }

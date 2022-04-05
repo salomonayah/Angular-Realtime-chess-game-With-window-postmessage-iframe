@@ -14,25 +14,24 @@ export class IframepageComponent implements OnInit {
   constructor(private ngxChessBoardService: NgxChessBoardService) { }
 
   ngOnInit(): void {
-    window.addEventListener('message', (e) => {
+    window.addEventListener('message', ({ data }) => {
 
-      if (e.data.type != 'webpackOk') {
-        console.log('iframe page receive event from main', e);
+      if (data.type === 'update') {
+        this.board.setFEN(data.fen)
+        if (data.sender === 'chessBoardIframe1') {
+          this.board.reverse()
+        }
+      } else if (data.type === 'reverse') {
+        this.board.reverse()
       }
 
     })
   }
 
-  reset() {
-    this.board.reset();
-  }
-
   moveDone(e: any) {
-    window.parent.postMessage({ moveDetails: e }, "*")
+    //@ts-ignore //this because Ts don't the type of the event
+    window.parent.postMessage({ move: e, type: "update" }, "*")
   }
 
-  setMove(newPosition: string) {
-    this.board.setFEN(newPosition);
-  }
 
 }

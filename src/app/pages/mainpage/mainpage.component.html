@@ -12,7 +12,7 @@
 
     <div class="iframe-two">
       <iframe #iframeElement2 id="chessBoardIframe2" title="chessGame2" width="600" height="600"
-        [src]="'http://localhost:4200/iframepage' | urlsafety">>
+        [src]="'http://localhost:4200/iframepage' | urlsafety" (load)="sendReverse()">
       </iframe>
     </div>
 
