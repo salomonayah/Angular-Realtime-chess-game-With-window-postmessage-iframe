@@ -1,6 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgxChessBoardService, NgxChessBoardView } from 'ngx-chess-board';
 
+import { environment } from '../../../environments/environment';
+
 @Component({
   selector: 'app-iframepage',
   templateUrl: './iframepage.component.html',
@@ -14,26 +16,49 @@ export class IframepageComponent implements OnInit {
   constructor(private ngxChessBoardService: NgxChessBoardService) { }
 
   ngOnInit(): void {
+  }
+
+  listenToMessageEvent(): void {
     window.addEventListener('message', ({ data }) => {
 
-      if (data.type === 'update') {
-        this.board.setFEN(data.fen)
-        if (data.sender === 'chessBoardIframe1') {
+      switch (data.type) {
+
+        case 'update':
+          localStorage.setItem('lastFem', data.fen)
+          this.board.setFEN(data.fen)
+          if (data.sender === 'chessBoardIframe1') { this.board.reverse() }
+          break;
+
+        case 'reverse':
           this.board.reverse()
-        }
-      } else if (data.type === 'reverse') {
-        this.board.reverse()
-      } else if (data.type === 'reset') {
-        this.board.reset()
+          break;
+
+        case 'reset':
+          this.board.reset()
+          break;
+
       }
 
     })
+
   }
 
-  moveDone(e: any) {
-    //@ts-ignore //this because Ts don't the type of the event
-    window.parent.postMessage({ move: e, type: "update" }, "*")
+  moveDone(e: any): void {
+    // window.parent.postMessage({ move: e, type: "update" }, `*`)
+    window.parent.postMessage({ move: e, type: "update" }, `${environment.serverUrl}`)
   }
 
+  setPreviewGameStatement(): void {
+    const currentFen = localStorage.getItem('lastFem');
+
+    if (currentFen) {
+      this.board.setFEN(currentFen)
+    }
+  }
+
+  ngAfterViewInit(): void {
+    this.setPreviewGameStatement();
+    this.listenToMessageEvent();
+  }
 
 }

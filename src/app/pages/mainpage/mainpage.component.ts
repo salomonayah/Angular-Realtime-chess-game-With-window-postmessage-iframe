@@ -23,10 +23,29 @@ export class MainpageComponent implements OnInit, AfterViewInit {
   constructor() { }
 
   ngOnInit(): void {
-    window.addEventListener('message', (e: any) => {
-      const { data, source } = e;
+    this.setTurnToPlay()
+  }
 
-      console.log(data.move.mate)
+
+  setTurnToPlay(): void {
+    const currentTurnToPlay = Number(localStorage.getItem('turnToPlay'));
+
+    if (currentTurnToPlay) {
+      this.turnToPlay = currentTurnToPlay
+    }
+  }
+
+
+  sendReverseOnLoad(): void {
+    this.iframeTwoContent.postMessage({ reverse: true, type: "reverse" }, `${environment.serverUrl}/iframepage`)
+  }
+
+  listenToFrameEvent(): void {
+    window.addEventListener('message', (e: any) => {
+
+      if (e.origin !== environment.serverUrl) { return; }
+
+      const { data } = e;
 
       if (data.type != 'webpackOk') {
         const moveUpdateData = {
@@ -37,18 +56,15 @@ export class MainpageComponent implements OnInit, AfterViewInit {
 
         this.postEventInsideIframeContent(moveUpdateData)
 
-        if (data?.move?.mate) {  // if the move is a check mate then it is a frame update
+        if (data?.move?.mate) {  // if the move is a check mate then display alert
           this.displayCheckMateModal = true;
         }
       }
     })
   }
 
-  sendReverse() {
-    this.iframeTwoContent.postMessage({ reverse: true, type: "reverse" }, `${environment.serverUrl}/iframepage`)
-  }
 
-  postEventInsideIframeContent(moveUpdateData: { fen: string; sender: string; type: string; }) {
+  postEventInsideIframeContent(moveUpdateData: { fen: string; sender: string; type: string; }): void {
 
     switch (moveUpdateData.sender) {
 
@@ -56,18 +72,20 @@ export class MainpageComponent implements OnInit, AfterViewInit {
 
         this.iframeTwoContent.postMessage(moveUpdateData, `${environment.serverUrl}/iframepage`);
         this.turnToPlay = 2;
+        localStorage.setItem('turnToPlay', this.turnToPlay.toString())
         break;
 
       case 'chessBoardIframe2':
 
         this.iframeOneContent.postMessage(moveUpdateData, `${environment.serverUrl}/iframepage`);
         this.turnToPlay = 1;
+        localStorage.setItem('turnToPlay', this.turnToPlay.toString())
         break;
     }
 
   }
 
-  resetAll() {
+  resetAll(): void {
     this.iframeOneContent.postMessage({ reset: true, type: "reset" }, `${environment.serverUrl}/iframepage`);
     this.iframeTwoContent.postMessage({ reset: true, type: "reset" }, `${environment.serverUrl}/iframepage`);
   }
@@ -75,6 +93,7 @@ export class MainpageComponent implements OnInit, AfterViewInit {
   ngAfterViewInit(): void {
     this.iframeOneContent = this.iframeElement1.nativeElement.contentWindow
     this.iframeTwoContent = this.iframeElement2.nativeElement.contentWindow
+    this.listenToFrameEvent()
   }
 
 }

@@ -6,7 +6,7 @@
       <div> check mate !</div>
 
       <div class="button-wrapper">
-        <button class="button">Create new game</button>
+        <button class="button" (click)="resetAll()">Create new game</button>
       </div>
     </div>
   </div>
@@ -26,7 +26,7 @@
 
     <div class="iframe-two" [ngClass]="{'disableMouse': turnToPlay === 1 ? true : false}">
       <iframe #iframeElement2 id="chessBoardIframe2" title="chessGame2" width="600" height="600"
-        [src]="'http://localhost:4200/iframepage' | urlsafety" (load)="sendReverse()">
+        [src]="'http://localhost:4200/iframepage' | urlsafety" (load)="sendReverseOnLoad()">
       </iframe>
     </div>
 
