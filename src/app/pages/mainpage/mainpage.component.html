@@ -1,16 +1,30 @@
+<div class="modal-container" *ngIf="displayCheckMateModal">
+  <div class="modal-body-card">
+    <div class="game-result">
+      <h2> Game over </h2>
+
+      <div> check mate !</div>
+
+      <div class="button-wrapper">
+        <button class="button">Create new game</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 <header>
   <h2> MAIN PAGE</h2>
 </header>
 <main>
   <div class="iframe-container">
 
-    <div class="iframe-one">
+    <div class="iframe-one" [ngClass]="{'disableMouse': turnToPlay === 2 ? true : false}">
       <iframe #iframeElement1 id="chessBoardIframe1" title="chessGame1" width="600" height="600"
         [src]="'http://localhost:4200/iframepage' | urlsafety">
       </iframe>
     </div>
 
-    <div class="iframe-two">
+    <div class="iframe-two" [ngClass]="{'disableMouse': turnToPlay === 1 ? true : false}">
       <iframe #iframeElement2 id="chessBoardIframe2" title="chessGame2" width="600" height="600"
         [src]="'http://localhost:4200/iframepage' | urlsafety" (load)="sendReverse()">
       </iframe>

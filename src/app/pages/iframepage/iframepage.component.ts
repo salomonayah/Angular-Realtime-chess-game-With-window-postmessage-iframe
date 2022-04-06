@@ -23,6 +23,8 @@ export class IframepageComponent implements OnInit {
         }
       } else if (data.type === 'reverse') {
         this.board.reverse()
+      } else if (data.type === 'reset') {
+        this.board.reset()
       }
 
     })
