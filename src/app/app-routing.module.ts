@@ -1,17 +1,20 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { IframepageComponent } from './pages/iframepage/iframepage.component';
-import { MainpageComponent } from './pages/mainpage/mainpage.component';
-
 const routes: Routes = [
   {
-    path: 'mainpage',
-    component: MainpageComponent,
+    path: 'online-game',
+    loadChildren: () =>
+      import('./online-game/online-game.module').then((mod) => mod.OnlineGameModule),
   },
   {
-    path: 'iframepage',
-    component: IframepageComponent,
+    path: '',
+    loadChildren: () => import('./initial-game-state/initial-game-state.module').then((mod) => mod.InitialGameStateModule),
+  },
+  {
+    path: '',
+    redirectTo: '',
+    pathMatch: 'full',
   }
 ];
 
