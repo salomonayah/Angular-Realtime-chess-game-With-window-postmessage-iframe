@@ -34,6 +34,7 @@ export class IframepageComponent implements OnInit {
           break;
 
         case 'reset':
+          localStorage.clear()
           this.board.reset()
           break;
 

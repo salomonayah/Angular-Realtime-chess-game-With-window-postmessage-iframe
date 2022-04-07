@@ -47,7 +47,7 @@ export class MainpageComponent implements OnInit, AfterViewInit {
 
       const { data } = e;
 
-      if (data.type != 'webpackOk') {
+      if (data.type != 'webpackOk' && data?.move) {
         const moveUpdateData = {
           fen: data.move.fen,
           sender: e.source.frameElement?.id,
@@ -86,6 +86,7 @@ export class MainpageComponent implements OnInit, AfterViewInit {
   }
 
   resetAll(): void {
+
     this.iframeOneContent.postMessage({ reset: true, type: "reset" }, `${environment.serverUrl}/iframepage`);
     this.iframeTwoContent.postMessage({ reset: true, type: "reset" }, `${environment.serverUrl}/iframepage`);
   }
