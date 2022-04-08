@@ -4,6 +4,7 @@ import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { NgxChessBoardModule } from 'ngx-chess-board';
+import { ToastrModule } from 'ngx-toastr';
 
 import { environment } from '../../environments/environment';
 import { OnlineGameHomeComponent } from './conponents/online-game-home/online-game-home.component';
@@ -22,6 +23,7 @@ import { OnlineGameRoutingModule } from './online-game-routing.module';
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireAuthModule,
     AngularFirestoreModule,
+    ToastrModule.forRoot()
   ]
 })
 export class OnlineGameModule { }

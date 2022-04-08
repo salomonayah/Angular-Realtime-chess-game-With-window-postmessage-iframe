@@ -28,10 +28,7 @@ export class GameService {
       this.angularFirestore
         .collection('game-collection')
         .add(game)
-        .then(
-          (response) => {
-            console.log(response);
-          },
+        .then((response) => response,
           (error) => reject(error)
         );
     });
