@@ -1,1 +1,21 @@
-<p>player-two-frame works!</p>
+<header>
+  <h2> PLAYER 2 BOARD</h2>
+  <div> <button class="button" (click)="resetAll()">Clear data and Create new game</button> </div>
+</header>
+<main>
+  <div class="iframe-container">
+
+    <div class="iframe-one" [ngClass]="{'disableMouse': turnToPlay === 2 ? true : false}">
+      <iframe #iframeElement1 id="chessBoardIframe1" title="chessGame1" width="600" height="600"
+        [src]="'http://localhost:4200/iframepage' | urlsafety">
+      </iframe>
+    </div>
+
+    <div class="iframe-two" [ngClass]="{'disableMouse': turnToPlay === 1 ? true : false}">
+      <iframe #iframeElement2 id="chessBoardIframe2" title="chessGame2" width="600" height="600"
+        [src]="'http://localhost:4200/iframepage' | urlsafety" (load)="sendReverseOnLoad()">
+      </iframe>
+    </div>
+
+  </div>
+</main>

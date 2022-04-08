@@ -4,7 +4,16 @@
 
 export const environment = {
   production: false,
-  serverUrl: 'http://localhost:4200'
+  serverUrl: 'http://localhost:4200',
+  firebaseConfig: {
+    apiKey: "AIzaSyBclD7ToBOL0i9mvkJArAJwXiNHaEWSxgU",
+    authDomain: "chess-online-game.firebaseapp.com",
+    databaseURL: "https://chess-online-game-default-rtdb.firebaseio.com",
+    projectId: "chess-online-game",
+    storageBucket: "chess-online-game.appspot.com",
+    messagingSenderId: "246728743379",
+    appId: "1:246728743379:web:4c516ab4a300dc4665f726"
+  }
 };
 
 /*
