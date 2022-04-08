@@ -40,6 +40,7 @@ export class PlaygroundComponent implements OnInit {
 
   setPreviewGameStatement(currentFen: string): void {
     this.board.setFEN(currentFen)
+    if (this.currentPlayerId === 2) { this.board.reverse() }
   }
 
   getCurrentGameData(gameCode: string) {
@@ -49,9 +50,12 @@ export class PlaygroundComponent implements OnInit {
           this.toast.error("Sorry we can't find this game! Invalid code. Please try again");
           this.router.navigateByUrl(`online-game`);
         }
-        this.currentGameData = resp[0].payload.doc.data();
+        this.currentGameData = resp[0].payload.doc.data(); // documentData
         this.currentGameDocumentId = resp[0]?.payload.doc.ref.id // documentId
-        this.setPreviewGameStatement(this.currentGameData.fen)
+        this.setPreviewGameStatement(this.currentGameData.fen) // set board
+        if (this.currentGameData.gameEnded) {  // if the move is a check mate then display alert
+          this.displayCheckMateModal = true;
+        }
       }, (error) => {
         console.log(error)
       }
@@ -70,14 +74,10 @@ export class PlaygroundComponent implements OnInit {
       fen: moveFen,
       turnToPlay: this.currentPlayerId === 1 ? 2 : 1,
       gameStarted: true,
-      gameEnded: this.currentGameData.gameEnded
+      gameEnded: e.mate ? true : false
     }
 
     this.gameService.updateGame(gameUpdate, this.currentGameDocumentId)
-
-    if (e.mate) {  // if the move is a check mate then display alert
-      this.displayCheckMateModal = true;
-    }
   }
 
   startNewGame() {
