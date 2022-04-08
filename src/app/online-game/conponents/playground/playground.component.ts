@@ -3,6 +3,7 @@ import { AngularFirestoreCollection } from '@angular/fire/compat/firestore';
 import { ActivatedRoute } from '@angular/router';
 import { NgxChessBoardView } from 'ngx-chess-board';
 
+import { environment } from '../../../../environments/environment';
 import { Game } from '../../models/game.models';
 import { GameService } from '../../services/game.service';
 
@@ -19,8 +20,8 @@ export class PlaygroundComponent implements OnInit {
   currentGameData: Game;
   currentGameDocumentId: string;
   currentCode: string;
+  linkToJoin = `${environment.serverUrl}/online-game`;
   currentPlayerId: number;
-
 
   constructor(
     private gameService: GameService,

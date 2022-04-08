@@ -1,7 +1,22 @@
-<div class="game-title"> PLAY ONLINE WITH A FRIEND </div>
+<div class="game-details">
+  <div class="item-wrapper">
+    <div class="text-associate">
+      <div class="item-title"> Invite your friend: </div>
+      <div class="item-description"> <b> GAME CODE:</b> {{ currentCode }} </div>
+      <div class="item-description"> <b> LINK TO JOIN :</b> {{ linkToJoin }} </div>
+    </div>
+  </div>
+  <div class="game-title"> PLAY ONLINE WITH A FRIEND </div>
+  <div class="item-wrapper">
+    <div class="text-associate">
+      <div class="item-title"> Player piece: </div>
+      <div class="item-description"> <b> PLAYER ONE: </b> White pieces </div>
+      <div class="item-description"> <b> PLAYER TWO: </b> Black pieces </div>
+    </div>
+  </div>
+</div>
 
 <div class="online-game-board-wrapper">
-  <ngx-chess-board #board (moveChange)="moveDone($event)" [lightTileColor]="'#DEBF83'" [showPossibleCaptures]="true"
-    [darkTileColor]="'#FB0007'">
+  <ngx-chess-board #board (moveChange)="moveDone($event)" [lightTileColor]="'#DEBF83'" [darkTileColor]="'#FB0007'">
   </ngx-chess-board>
 </div>

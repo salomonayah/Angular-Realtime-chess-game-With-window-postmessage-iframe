@@ -1,8 +1,50 @@
+
+.game-details {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
 .game-title {
   font-family: 'Baloo Bhai';
   font-size: 20px;
   text-align: center;
   margin-top: 25px;
+}
+
+.item-wrapper {
+  background-color: #FFF;
+  padding: 8px 10px;
+  min-height: 100px;
+  border: 1px solid #E6E6E6;
+  border-radius: 4px;
+  box-shadow: 0px 3px 10px #CBC9C940;
+  width: 400px;
+
+  .text-associate {
+
+      .item-title {
+          text-align: left;
+          font-family: "Rubik-medium", sans-serif;
+          font-size: 16px;
+          color: #33475B;
+          margin-bottom: 10px;
+          text-decoration: underline;
+      }
+
+      .item-description{
+          text-align: left;
+          font-family: "Rubik-regular", sans-serif;
+          font-size: 15px;
+          color: #4a55eb;
+          margin-top: 5px;
+
+          b {
+            color: #000;
+          }
+      }
+
+  }
 }
 
 .option-selection-text {
