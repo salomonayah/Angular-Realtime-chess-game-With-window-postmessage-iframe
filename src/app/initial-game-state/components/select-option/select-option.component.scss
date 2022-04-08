@@ -1,0 +1,113 @@
+
+
+.game-title {
+  font-family: 'Baloo Bhai';
+  font-size: 20px;
+  text-align: center;
+  margin-top: 25px;
+}
+
+.option-selection-text {
+  font-size: 16px;
+  text-align: center;
+  margin-top: 10px;
+}
+
+.container {
+  width: 80%;
+  margin: auto;
+}
+
+.item-wrapper {
+    margin-top: 50px;
+    display: flex;
+    flex-direction: row;
+    background-color: #FFF;
+    padding: 20px 10px;
+    min-height: 100px;
+    border: 1px solid #E6E6E6;
+    border-radius: 4px;
+    box-shadow: 0px 3px 10px #CBC9C940;
+    min-height: 200px;
+
+    .image-associate {
+        width: 25%;
+        margin-right: 10px;
+        text-align: center;
+
+        .item-img {
+            width: auto;
+            height: 150px;
+        }
+
+    }
+
+    .text-associate {
+        width: 75%;
+        position: relative;
+
+        .item-title {
+            text-align: left;
+            font-family: "Rubik-medium", sans-serif;
+            font-size: 15px;
+            color: #33475B;
+        }
+
+        .item-description{
+            text-align: left;
+            font-family: "Rubik-regular", sans-serif;
+            font-size: 13px;
+            color: #A0A0A0;
+            margin-top: 5px;
+        }
+
+    }
+}
+
+.button-wrapper {
+    text-align: right;
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    .button {
+      min-width: 250px;
+      border: 2px solid transparent;
+      border-radius: 4px;
+      box-sizing: border-box;
+      position: relative;
+      background-color: #4CAF50;
+      color: #FFFFFF;
+      font-size: 16px;
+      padding: 8px 10px;
+      text-align: center;
+      margin: 4px 2px;
+      text-decoration: none;
+      overflow: hidden;
+      cursor: pointer;
+    }
+
+    .button:after {
+      content: "";
+      background: #f1f1f1;
+      display: block;
+      position: absolute;
+      padding-top: 300%;
+      padding-left: 350%;
+      margin-left: -40px !important;
+      margin-top: -120%;
+      opacity: 0;
+      transition: all 0.8s
+    }
+
+    .button:active:after {
+      padding: 0;
+      margin: 0;
+      opacity: 1;
+      transition: 0s
+    }
+
+    .disabled {
+      opacity: 0.6;
+      pointer-events: none;
+    }
+}

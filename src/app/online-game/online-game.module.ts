@@ -6,18 +6,14 @@ import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { NgxChessBoardModule } from 'ngx-chess-board';
 
 import { environment } from '../../environments/environment';
-import { UrlsafetyPipe } from '../pipes/urlsafety.pipe';
-import { OnlineGameSourceFrameComponent } from './conponents/online-game-source-frame/online-game-source-frame.component';
-import { PlayerOneFrameComponent } from './conponents/player-one-frame/player-one-frame.component';
-import { PlayerTwoFrameComponent } from './conponents/player-two-frame/player-two-frame.component';
+import { OnlineGameHomeComponent } from './conponents/online-game-home/online-game-home.component';
+import { PlaygroundComponent } from './conponents/playground/playground.component';
 import { OnlineGameRoutingModule } from './online-game-routing.module';
 
 @NgModule({
   declarations: [
-    OnlineGameSourceFrameComponent,
-    PlayerOneFrameComponent,
-    PlayerTwoFrameComponent,
-    UrlsafetyPipe
+    OnlineGameHomeComponent,
+    PlaygroundComponent
   ],
   imports: [
     CommonModule,

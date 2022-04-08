@@ -6,6 +6,7 @@ import { UrlsafetyPipe } from '../pipes/urlsafety.pipe';
 import { IframepageComponent } from './components/iframepage/iframepage.component';
 import { MainpageComponent } from './components/mainpage/mainpage.component';
 import { InitialGameStateRoutingModule } from './initial-game-state-routing.module';
+import { SelectOptionComponent } from './components/select-option/select-option.component';
 
 
 @NgModule({
@@ -13,6 +14,7 @@ import { InitialGameStateRoutingModule } from './initial-game-state-routing.modu
     MainpageComponent,
     IframepageComponent,
     UrlsafetyPipe,
+    SelectOptionComponent,
   ],
   imports: [
     CommonModule,

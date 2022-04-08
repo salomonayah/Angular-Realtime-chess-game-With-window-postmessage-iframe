@@ -1,0 +1,34 @@
+/* Fonts */
+
+//PT_Sans
+@font-face {
+    font-family: 'Rubik-light';
+    /* IE9 Compat Modes */
+    src: url('/assets/fonts/rubik/Rubik-Light.woff') format('woff'), /* Pretty Modern Browsers */
+}
+
+@font-face {
+    font-family: 'Rubik-regular';
+    font-display: swap;
+    /* IE9 Compat Modes */
+    src: url('/assets/fonts/rubik/Rubik-Regular.woff') format('woff'), /* Pretty Modern Browsers */
+}
+
+@font-face {
+    font-family: 'Rubik-medium';
+    font-display: swap;
+    /* IE9 Compat Modes */
+    src: url('/assets/fonts/rubik/Rubik-Medium.woff') format('woff'), /* Pretty Modern Browsers */
+}
+
+@font-face {
+    font-family: 'Rubik-bold';
+    font-display: swap;
+    /* IE9 Compat Modes */
+    src: url('/assets/fonts/rubik/Rubik-Bold.woff') format('woff'), /* Pretty Modern Browsers */
+}
+
+@font-face {
+    font-family: 'Baloo Bhai';
+    src: url('/assets/fonts/Baloo-Regular.woff') format('woff');
+}

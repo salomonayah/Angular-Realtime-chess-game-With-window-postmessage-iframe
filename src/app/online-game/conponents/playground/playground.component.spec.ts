@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PlayerOneFrameComponent } from './player-one-frame.component';
+import { PlaygroundComponent } from './playground.component';
 
-describe('PlayerOneFrameComponent', () => {
-  let component: PlayerOneFrameComponent;
-  let fixture: ComponentFixture<PlayerOneFrameComponent>;
+describe('PlaygroundComponent', () => {
+  let component: PlaygroundComponent;
+  let fixture: ComponentFixture<PlaygroundComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ PlayerOneFrameComponent ]
+      declarations: [ PlaygroundComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(PlayerOneFrameComponent);
+    fixture = TestBed.createComponent(PlaygroundComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

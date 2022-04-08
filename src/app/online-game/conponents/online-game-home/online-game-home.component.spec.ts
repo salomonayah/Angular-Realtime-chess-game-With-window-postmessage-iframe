@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PlayerTwoFrameComponent } from './player-two-frame.component';
+import { OnlineGameHomeComponent } from './online-game-home.component';
 
-describe('PlayerTwoFrameComponent', () => {
-  let component: PlayerTwoFrameComponent;
-  let fixture: ComponentFixture<PlayerTwoFrameComponent>;
+describe('OnlineGameHomeComponent', () => {
+  let component: OnlineGameHomeComponent;
+  let fixture: ComponentFixture<OnlineGameHomeComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ PlayerTwoFrameComponent ]
+      declarations: [ OnlineGameHomeComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(PlayerTwoFrameComponent);
+    fixture = TestBed.createComponent(OnlineGameHomeComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
