@@ -3,6 +3,7 @@ export interface Game {
   fen: string;
   gameCode: string;
   turnToPlay: number;
+  gameStarted: boolean;
   gameEnded: boolean;
 }
 

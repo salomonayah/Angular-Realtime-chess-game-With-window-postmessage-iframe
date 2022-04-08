@@ -16,11 +16,11 @@ export class PlaygroundComponent implements OnInit {
   @ViewChild('board', { static: false }) board!: NgxChessBoardView;
 
   gameCollection: AngularFirestoreCollection<Game>;
-
   currentGameData: Game;
   currentGameDocumentId: string;
   currentCode: string;
   currentPlayerId: number;
+
 
   constructor(
     private gameService: GameService,
@@ -42,23 +42,22 @@ export class PlaygroundComponent implements OnInit {
       (resp: any) => {
         this.currentGameData = resp[0].payload.doc.data();
         this.currentGameDocumentId = resp[0].payload.doc.ref.id // documentId
-
-        console.log('update received', this.currentGameData)
+        this.setPreviewGameStatement(this.currentGameData.fen)
       }
     )
   }
 
   moveDone(e: any): void {
-
+    const moveFen: string = e.fen
 
     const gameUpdate: Game = {
-      ...this.currentGameData,
-      fen: e.fen.toString(),
-      turnToPlay: 3
-      // turnToPlay: this.currentPlayerId === 1 ? 2 : 1
+      gameCode: this.currentGameData.gameCode,
+      fen: moveFen,
+      turnToPlay: this.currentPlayerId === 1 ? 2 : 1,
+      gameStarted: true,
+      gameEnded: this.currentGameData.gameEnded
     }
 
-    console.log(gameUpdate);
     this.gameService.updateGame(gameUpdate, this.currentGameDocumentId)
   }
 

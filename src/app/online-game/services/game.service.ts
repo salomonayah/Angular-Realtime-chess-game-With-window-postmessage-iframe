@@ -40,10 +40,6 @@ export class GameService {
   }
 
   updateGame(game: Game, id: string) {
-    return this.angularFirestore.collection('game-collection').doc(id).update({
-      gameCode: game.gameCode,
-      turnToPlay: game.turnToPlay,
-      gameEnded: game.gameEnded
-    });
+    return this.angularFirestore.collection('game-collection').doc(id).update(game);
   }
 }

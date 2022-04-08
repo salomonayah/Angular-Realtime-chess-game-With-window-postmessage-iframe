@@ -26,6 +26,7 @@ export class OnlineGameHomeComponent implements OnInit {
       gameCode: this.generateUniqueId(),
       fen: '',
       turnToPlay: 1,
+      gameStarted: false,
       gameEnded: false
     }
 
