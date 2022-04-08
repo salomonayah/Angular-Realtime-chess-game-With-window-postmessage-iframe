@@ -47,8 +47,7 @@ export class PlaygroundComponent implements OnInit {
     this.gameService.getGameDocByGameCode(gameCode).subscribe(
       (resp: any) => {
         if (resp.length === 0) {
-          this.toast.error("Sorry we can't find this game! Invalid code. Please try again");
-          this.router.navigateByUrl(`online-game`);
+          this.canNotStartTheGame()
         }
         this.currentGameData = resp[0].payload.doc.data(); // documentData
         this.currentGameDocumentId = resp[0]?.payload.doc.ref.id // documentId
@@ -57,9 +56,14 @@ export class PlaygroundComponent implements OnInit {
           this.displayCheckMateModal = true;
         }
       }, (error) => {
-        console.log(error)
+        this.canNotStartTheGame()
       }
     )
+  }
+
+  canNotStartTheGame() {
+    this.toast.error("Sorry we can't find this game! Invalid code. Please try again");
+    this.router.navigateByUrl(`online-game`);
   }
 
   isYourTurn() {

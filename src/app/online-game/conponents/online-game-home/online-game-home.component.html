@@ -30,7 +30,9 @@
   <img src="assets/images/playOnlineWithFriendImg.png" alt="item img" class="item-img">
 </div>
 
-<div class="instruction">
+<h2 *ngIf="loadingGame"> Loading the game ...</h2>
+
+<div class="instruction" *ngIf="!loadingGame">
 
   <div class="option-selection-text">
     If you are the first player, then you can <b>create a new game</b> and share code with your friend.
@@ -42,7 +44,7 @@
 
 </div>
 
-<div class="button-wrapper">
+<div class="button-wrapper" *ngIf="!loadingGame">
   <button class="button" (click)="createNewGame()">Create a new game</button>
   <button class="button" (click)="wantToJoin = true">Join a game</button>
 </div>

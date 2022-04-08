@@ -14,7 +14,8 @@ import { GameService } from '../../services/game.service';
 export class OnlineGameHomeComponent implements OnInit {
 
   wantToJoin: boolean;
-  codeToJoinGame: string
+  codeToJoinGame: string;
+  loadingGame = false;
 
   constructor(
     private gameService: GameService,
@@ -30,6 +31,7 @@ export class OnlineGameHomeComponent implements OnInit {
   }
 
   createNewGame() {
+    this.loadingGame = true;
     const newGameData: Game = {
       gameCode: this.generateUniqueId(),
       fen: '',
@@ -40,12 +42,12 @@ export class OnlineGameHomeComponent implements OnInit {
 
     this.gameService.createGame(newGameData).then(
       (response) => {
-        console.log(response);
+        this.loadingGame = false;
         this.toast.success('New game successfully created !')
         this.router.navigateByUrl(`online-game/playground/1/game-code/${newGameData.gameCode}`);
       }
     ).catch((e) => {
-      console.log(e)
+      this.loadingGame = false;
       this.toast.error(e)
     });
   }
@@ -65,7 +67,6 @@ export class OnlineGameHomeComponent implements OnInit {
 
   onSubmit(formData: NgForm): void {
     const formValues = formData.form.value.code;
-    console.log(formValues)
     this.router.navigateByUrl(`online-game/playground/2/game-code/${formValues}`);
   }
 
