@@ -10,11 +10,16 @@ export class GameService {
 
   constructor(private angularFirestore: AngularFirestore) { }
 
-  getGameDoc(id: string) {
+  getGameDocById(id: string) {
     return this.angularFirestore
       .collection('game-collection')
       .doc(id)
       .valueChanges();
+  }
+
+  getGameDocByGameCode(gameCode: string) {
+    return this.angularFirestore
+      .collection('game-collection', ref => ref.where('gameCode', '==', `${gameCode}`)).snapshotChanges()
   }
 
   getGameList() {

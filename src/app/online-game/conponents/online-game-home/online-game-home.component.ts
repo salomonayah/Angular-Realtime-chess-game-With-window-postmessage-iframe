@@ -24,6 +24,7 @@ export class OnlineGameHomeComponent implements OnInit {
   createNewGame() {
     const newGameData: Game = {
       gameCode: this.generateUniqueId(),
+      fen: '',
       turnToPlay: 1,
       gameEnded: false
     }
@@ -32,7 +33,7 @@ export class OnlineGameHomeComponent implements OnInit {
       (response) => {
         console.log(response);
         this.toast.success('New game successfully created !')
-        this.router.navigateByUrl(`playground/1/game-code/${newGameData.gameCode}`);
+        this.router.navigateByUrl(`online-game/playground/1/game-code/${newGameData.gameCode}`);
       }
     ).catch((e) => {
       console.log(e)

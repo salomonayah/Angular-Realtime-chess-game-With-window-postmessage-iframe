@@ -1,1 +1,7 @@
-<p>playground works!</p>
+<div class="game-title"> PLAY ONLINE WITH A FRIEND </div>
+
+<div class="online-game-board-wrapper">
+  <ngx-chess-board #board (moveChange)="moveDone($event)" [lightTileColor]="'#DEBF83'" [showPossibleCaptures]="true"
+    [darkTileColor]="'#FB0007'">
+  </ngx-chess-board>
+</div>
