@@ -24,14 +24,7 @@ export class GameService {
   }
 
   createGame(game: Game) {
-    return new Promise<any>((resolve, reject) => {
-      this.angularFirestore
-        .collection('game-collection')
-        .add(game)
-        .then((response) => response,
-          (error) => reject(error)
-        );
-    });
+    return this.angularFirestore.collection('game-collection').add(game)
   }
 
   deleteGame(game: Game) {

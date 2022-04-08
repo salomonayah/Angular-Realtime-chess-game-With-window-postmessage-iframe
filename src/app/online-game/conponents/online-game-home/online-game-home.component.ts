@@ -27,6 +27,7 @@ export class OnlineGameHomeComponent implements OnInit {
       turnToPlay: 1,
       gameEnded: false
     }
+    console.log(newGameData);
     this.gameService.createGame(newGameData).then(
       (response) => {
         console.log(response);
