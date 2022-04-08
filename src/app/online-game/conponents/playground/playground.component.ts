@@ -1,7 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { AngularFirestoreCollection } from '@angular/fire/compat/firestore';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { NgxChessBoardView } from 'ngx-chess-board';
+import { ToastrService } from 'ngx-toastr';
 
 import { environment } from '../../../../environments/environment';
 import { Game } from '../../models/game.models';
@@ -22,10 +23,13 @@ export class PlaygroundComponent implements OnInit {
   currentCode: string;
   linkToJoin = `${environment.serverUrl}/online-game`;
   currentPlayerId: number;
+  displayCheckMateModal = false;
 
   constructor(
     private gameService: GameService,
     private route: ActivatedRoute,
+    private toast: ToastrService,
+    private router: Router,
   ) { }
 
   ngOnInit(): void {
@@ -41,15 +45,21 @@ export class PlaygroundComponent implements OnInit {
   getCurrentGameData(gameCode: string) {
     this.gameService.getGameDocByGameCode(gameCode).subscribe(
       (resp: any) => {
+        if (resp.length === 0) {
+          this.toast.error("Sorry we can't find this game! Invalid code. Please try again");
+          this.router.navigateByUrl(`online-game`);
+        }
         this.currentGameData = resp[0].payload.doc.data();
-        this.currentGameDocumentId = resp[0].payload.doc.ref.id // documentId
+        this.currentGameDocumentId = resp[0]?.payload.doc.ref.id // documentId
         this.setPreviewGameStatement(this.currentGameData.fen)
+      }, (error) => {
+        console.log(error)
       }
     )
   }
 
   isYourTurn() {
-    return ((this.currentGameData.turnToPlay === this.currentPlayerId) && !this.currentGameData.gameEnded)
+    return ((this.currentGameData?.turnToPlay === this.currentPlayerId) && !this.currentGameData.gameEnded)
   }
 
   moveDone(e: any): void {
@@ -64,6 +74,14 @@ export class PlaygroundComponent implements OnInit {
     }
 
     this.gameService.updateGame(gameUpdate, this.currentGameDocumentId)
+
+    if (e.mate) {  // if the move is a check mate then display alert
+      this.displayCheckMateModal = true;
+    }
+  }
+
+  startNewGame() {
+    this.router.navigateByUrl(`online-game`);
   }
 
 }

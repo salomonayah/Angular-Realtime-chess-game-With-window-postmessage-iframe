@@ -65,8 +65,15 @@
 
 .game-player-turn {
   color: rgb(34, 155, 54);
+  font-family: 'Rubik-bold';
 }
 
 .game-opponent-turn {
   color: rgb(241, 35, 35);
+  font-family: 'Rubik-bold';
+}
+
+.disableMouse {
+  pointer-events : none;
+  opacity: 0.5;
 }

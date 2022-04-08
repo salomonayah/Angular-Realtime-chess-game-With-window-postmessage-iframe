@@ -1,3 +1,17 @@
+<div class="modal-container" *ngIf="displayCheckMateModal">
+  <div class="modal-body-card">
+    <div class="game-result">
+      <h2> Game over </h2>
+
+      <div> check mate !</div>
+
+      <div class="button-wrapper">
+        <button class="button" (click)="startNewGame()">Create new game</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 <div class="game-details">
   <div class="item-wrapper">
     <div class="text-associate">
@@ -9,7 +23,7 @@
   <div class="details">
     <div class="game-title"> PLAY ONLINE WITH A FRIEND </div>
     <div class="game-player-turn" *ngIf="isYourTurn()"> It is your turn to play </div>
-    <div class="game-opponent-turn" *ngIf="!isYourTurn()"> Waiting for your opponent turn to play </div>
+    <div class="game-opponent-turn" *ngIf="!isYourTurn()"> Waiting for your opponent to play </div>
 
   </div>
   <div class="item-wrapper">
@@ -21,7 +35,7 @@
   </div>
 </div>
 
-<div class="online-game-board-wrapper">
+<div class="online-game-board-wrapper" [ngClass]="{'disableMouse': !isYourTurn() }">
   <ngx-chess-board #board (moveChange)="moveDone($event)" [lightTileColor]="'#DEBF83'" [darkTileColor]="'#FB0007'">
   </ngx-chess-board>
 </div>
