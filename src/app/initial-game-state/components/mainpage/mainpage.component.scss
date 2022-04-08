@@ -66,37 +66,38 @@ header {
 }
 
 .button {
-      border: 1px solid transparent;
-      border-radius: 8px;
-      box-sizing: border-box;
-      position: relative;
-      background-color: #4CAF50;
-      color: #FFFFFF;
-      font-size: 16px;
-      padding: 8px;
-      text-align: center;
-      margin: 4px 2px;
-      text-decoration: none;
-      overflow: hidden;
-      cursor: pointer;
-    }
+  border: 1px solid transparent;
+  border-radius: 8px;
+  box-sizing: border-box;
+  position: relative;
+  background-color: #4CAF50;
+  color: #FFFFFF;
+  font-size: 16px;
+  padding: 8px;
+  text-align: center;
+  margin: 4px 2px;
+  text-decoration: none;
+  overflow: hidden;
+  cursor: pointer;
+}
 
-    .button:after {
-      content: "";
-      background: #f1f1f1;
-      display: block;
-      position: absolute;
-      padding-top: 300%;
-      padding-left: 350%;
-      margin-left: -40px !important;
-      margin-top: -120%;
-      opacity: 0;
-      transition: all 0.8s
-    }
+.button:after {
+  content: "";
+  background: #f1f1f1;
+  display: block;
+  position: absolute;
+  padding-top: 300%;
+  padding-left: 350%;
+  margin-left: -40px !important;
+  margin-top: -120%;
+  opacity: 0;
+  transition: all 0.8s
+}
 
-    .button:active:after {
-      padding: 0;
-      margin: 0;
-      opacity: 1;
-      transition: 0s
-    }
+.button:active:after {
+  padding: 0;
+  margin: 0;
+  opacity: 1;
+  transition: 0s
+}
+

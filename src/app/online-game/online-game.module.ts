@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { NgxChessBoardModule } from 'ngx-chess-board';
 import { ToastrModule, ToastrService } from 'ngx-toastr';
 
@@ -18,6 +19,7 @@ import { GameService } from './services/game.service';
     OnlineGameRoutingModule,
     ToastrModule.forRoot(),
     NgxChessBoardModule.forRoot(),
+    FormsModule,
   ],
   providers: [GameService, ToastrService],
 })

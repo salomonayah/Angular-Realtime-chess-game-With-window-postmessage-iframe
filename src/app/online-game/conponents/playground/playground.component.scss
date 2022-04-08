@@ -10,6 +10,7 @@
   font-size: 20px;
   text-align: center;
   margin-top: 25px;
+  margin-bottom: 25px;
 }
 
 .item-wrapper {
@@ -56,4 +57,16 @@
 .online-game-board-wrapper{
   text-align: center;
   margin-top: 20px ;
+}
+
+.details {
+  text-align: center;
+}
+
+.game-player-turn {
+  color: rgb(34, 155, 54);
+}
+
+.game-opponent-turn {
+  color: rgb(241, 35, 35);
 }

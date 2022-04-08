@@ -48,6 +48,10 @@ export class PlaygroundComponent implements OnInit {
     )
   }
 
+  isYourTurn() {
+    return ((this.currentGameData.turnToPlay === this.currentPlayerId) && !this.currentGameData.gameEnded)
+  }
+
   moveDone(e: any): void {
     const moveFen: string = e.fen
 

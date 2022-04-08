@@ -6,7 +6,12 @@
       <div class="item-description"> <b> LINK TO JOIN :</b> {{ linkToJoin }} </div>
     </div>
   </div>
-  <div class="game-title"> PLAY ONLINE WITH A FRIEND </div>
+  <div class="details">
+    <div class="game-title"> PLAY ONLINE WITH A FRIEND </div>
+    <div class="game-player-turn" *ngIf="isYourTurn()"> It is your turn to play </div>
+    <div class="game-opponent-turn" *ngIf="!isYourTurn()"> Waiting for your opponent turn to play </div>
+
+  </div>
   <div class="item-wrapper">
     <div class="text-associate">
       <div class="item-title"> Player piece: </div>

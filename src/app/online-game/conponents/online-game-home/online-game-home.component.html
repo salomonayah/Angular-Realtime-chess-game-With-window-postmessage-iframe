@@ -1,3 +1,29 @@
+<div class="modal-container" *ngIf="wantToJoin" (click)="wantToJoin = false"></div>
+<div class="modal-body-card" *ngIf="wantToJoin">
+  <div class="game-result">
+    <form #joinGameForm="ngForm" (ngSubmit)="onSubmit(joinGameForm)">
+      <h2> Enter the code sent by your friend.</h2>
+
+      <div>
+        <input placeholder="Paste the code" type="text" name="code" ngModel #gameCode="ngModel" required
+          [(ngModel)]="codeToJoinGame">
+        <div
+          *ngIf=" (gameCode.invalid && (gameCode.dirty || gameCode.touched) || (gameCode.dirty  && !isSet(gameCode.value))  ) "
+          class="text-danger">
+          <small *ngIf="gameCode.errors?.required"> * Oups ! This field is required. </small>
+
+        </div>
+      </div>
+
+      <div class="button-wrapper">
+        <button class="button" [ngClass]="{'disabled': joinGameForm.invalid}" type="submit"
+          [disabled]="joinGameForm.invalid">Join the game</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+
 <div class="game-title"> PLAY ONLINE WITH A FRIEND </div>
 
 <div class="online-game-home-img-wrapper">
@@ -18,5 +44,5 @@
 
 <div class="button-wrapper">
   <button class="button" (click)="createNewGame()">Create a new game</button>
-  <button class="button">Join a game</button>
+  <button class="button" (click)="wantToJoin = true">Join a game</button>
 </div>
