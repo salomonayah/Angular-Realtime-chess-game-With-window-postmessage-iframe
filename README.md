@@ -1,27 +1,26 @@
-# PencilCodeChallengeFront
+# Angular
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.2.17.
 
-## Development server
+# ♟️ Angular Realtime Chess Game with Window PostMessage & Iframe
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## 🌟 Overview
+This project is an **Angular-based real-time chess game** that utilizes the **Window.postMessage API** for secure cross-origin communication between iframes. It showcases advanced **real-time state management**, **multi-window interactions**, and **dynamic UI embedding** using iframes.
 
-## Code scaffolding
+## 🚀 Features
+- **♟️ Realtime Chess Gameplay** – Play chess in real-time with opponent moves updated instantly.
+- **🔄 Cross-Origin Communication** – Uses `window.postMessage` for secure messaging between iframes.
+- **📱 Responsive UI** – Designed to work seamlessly on desktops, tablets, and mobile devices.
+- **🖼️ Iframe Integration** – Embeds the chessboard in an iframe for flexible integration with external applications.
+- **🎨 Modern UI** – Built with Angular Material for an intuitive and engaging user experience.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## 🛠️ Tech Stack
+- **Frontend:** Angular, TypeScript, HTML, CSS, Angular Material
+- **Realtime Messaging:** Window.postMessage API
+- **State Management:** RxJS for event-driven communication
 
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+## 🏗️ Installation & Setup
+1. Clone this repository:
+   ```sh
+   git clone https://github.com/yourusername/Angular-Realtime-chess-game-With-window-postmessage-iframe-demo.git
+   cd Angular-Realtime-chess-game-With-window-postmessage-iframe-demo
